@@ -78,9 +78,8 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    autoupdate
     git
-    zsh-syntax-highlighting
-    zsh-autosuggestions
     zsh-completions
     gh
     rust
@@ -90,9 +89,12 @@ plugins=(
     poetry
     lein
     macos
+    multipass
     brew
     fzf-zsh-plugin
     fzf-tab
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -129,8 +131,8 @@ alias config='git --git-dir=$HOME/.cfg --work-tree=$HOME'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
  
 alias ls=lsd
-alias la=ls -lA
-alias ll=ls -l
+alias la="ls -lA"
+alias ll="ls -l"
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias cat="bat -p"
@@ -138,3 +140,7 @@ alias tree="lsd --tree"
 
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
+
+setopt no_beep
+
+alias clang++="clang++ --std=c++14"
